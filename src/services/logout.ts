@@ -1,7 +1,3 @@
-import {SyntheticEvent, useState} from 'react';
-import {useHistory} from 'react-router-dom';
-import {Routes} from '~/constants';
-
 import {API} from '~/constants';
 import getUrl from '../utils/getUrl';
 
