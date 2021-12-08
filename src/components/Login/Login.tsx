@@ -20,7 +20,10 @@ const Login = () => {
       await login(username, password);
       push(Routes.Users);
     } catch (error) {
-      setErrorMessage(error.message);
+
+      setErrorMessage(error);
+      console.log(error);
+      
     }
   };
 
