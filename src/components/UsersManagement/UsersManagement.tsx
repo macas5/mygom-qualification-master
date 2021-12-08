@@ -41,7 +41,7 @@ const UsersManagement = () => {
           <List items={items}/>
         </Route>
         <Route path={Routes.Weak}>
-          <List items={items}/>
+          <List items={items.filter((item) => itemHasWeakPassword(item))}/>
         </Route>
         <Route path={Routes.Reused}>
           <List items={items.filter((item) => itemHasReusedPassword(item, items))}/>
