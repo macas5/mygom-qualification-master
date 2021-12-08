@@ -34,7 +34,7 @@ const UsersManagement = () => {
 
   return (
     <div className="container">
-      <Header items={items} username={username} />
+      <Header items={items.filter((item) => itemHasWeakPassword(item))} username={username} />
       <Filter items={items}/>
       <Switch>
         <Route exact path={Routes.Users}>
