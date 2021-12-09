@@ -43,7 +43,8 @@ const UpdateModal: FC<IUpdateModal> = ({ item }) => {
               email: newEmail,
             })
 
-            window.location.reload();
+            item.email = newEmail;
+            setShowModal(false);
           }}>Change</button>
           <button className="button ml-12px" onClick={() => {
             setShowModal(false)

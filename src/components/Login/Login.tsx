@@ -3,6 +3,7 @@ import {useHistory} from 'react-router-dom';
 import {Routes} from '~/constants';
 import login from '~/services/login';
 import ErrorBlock from '../ErrorBlock';
+import LoadingScreen from '../LoadingScreen/LoadingScreen';
 
 import './login-style.scss';
 
@@ -11,22 +12,28 @@ const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState<string>();
+  const [isLoading, setIsLoading] = useState<boolean>();
 
   const handleSubmit = async (event: SyntheticEvent<HTMLFormElement>) => {
+    setIsLoading(true);
     event.preventDefault();
     setErrorMessage(null);
-
+  
     try {
       await login(username, password);
+      setIsLoading(false);
       push(Routes.Users);
     } catch (error) {
-      setErrorMessage(error.message);
+
+      setErrorMessage(error);
+      setIsLoading (false);
     }
   };
 
   return (
     <div className="login-page">
       <form className="login-form" onSubmit={handleSubmit}>
+        <LoadingScreen isLoading={isLoading}/>
         <h1 className="text-center">
           Mygom.tech
         </h1>
